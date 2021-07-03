@@ -1,0 +1,13 @@
+html,body{height: 100%; width: 100%; overflow: hidden;}
+#wrap{position: relative; width: 100%; height: 100%;}
+h2{color: #fff; font-size: 3em; font-weight: bold; text-align: center; padding-top: 50%; transform: translateY(-50%); box-sizing: border-box;}
+section{width: 100%; height: 100%; position: absolute; left: 0; top: 100%;}
+section:nth-child(1){background-color: #F5C26E;}
+section:nth-child(2){background-color: #FFB873;}
+section:nth-child(3){background-color: #E89D74;}
+section:nth-child(4){background-color: #FF8F73;}
+
+
+.indicator{position: fixed; top: 50%; right: 40px; display: flex; flex-direction: column; z-index: 999;}
+.indicator a{box-shadow: inset 2px 2px 0px rgba(0,0,0,0.1); transition: height 0.5s; width: 15px; height: 15px; background-color: #CCD930; text-indent: -999999px; border-radius: 50%; margin-bottom: 10px; box-sizing: border-box; display: inline-block;}
+.indicator a.active{height: 30px; border-radius: 50px;}
