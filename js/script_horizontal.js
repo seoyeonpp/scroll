@@ -22,7 +22,7 @@ $(function(){
                     $nav.eq(old).removeClass('active');
     
                     console.log(`current : ${current}, old: ${old}`);
-                }
+                };
             };
             
         }else{
@@ -38,10 +38,10 @@ $(function(){
                     $nav.eq(current).addClass('active');
                     $nav.eq(old).removeClass('active');
                     console.log(`current : ${current}, old: ${old}`);
-                }
+                };
 
             };
-        }
+        };
     });
 
 
@@ -53,15 +53,21 @@ $(function(){
         $nav.removeClass('active');
         $nav.eq(it).addClass('active');
 
-        if(it > current){
-            $box.eq(current).stop().animate({left:"-100%"},500);
-            $box.eq(it).css({left:"100%"}).stop().animate({left:"0%"},500);
-            current = it;
-        }else{
-            $box.eq(current).stop().animate({left:"100%"},500);
-            $box.eq(it).css({left:"-100%"}).stop().animate({left:"0%"},500);
-            current = it;
-        }
+        if($box.is(':animated') == false){
+            if(it > current){
+                $box.eq(current).stop().animate({left:"-100%"},500);
+                $box.eq(it).css({left:"100%"}).stop().animate({left:"0%"},500);
+                current = it;
+            }else if(it < current){
+                $box.eq(current).stop().animate({left:"100%"},500);
+                $box.eq(it).css({left:"-100%"}).stop().animate({left:"0%"},500);
+                current = it;
+            }else if(it == current){
+                console.log('stop');
+                $box.eq(current).stop();
+                $box.eq(it).stop();
+            };
+        };
 
         return false;
     });

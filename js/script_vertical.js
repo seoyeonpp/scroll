@@ -22,7 +22,7 @@ $(function(){
                     $nav.eq(old).removeClass('active');
     
                     console.log(`current : ${current}, old: ${old}`);
-                }
+                };
             };
             
         }else{
@@ -38,10 +38,10 @@ $(function(){
                     $nav.eq(current).addClass('active');
                     $nav.eq(old).removeClass('active');
                     console.log(`current : ${current}, old: ${old}`);
-                }
+                };
 
             };
-        }
+        };
     });
 
 
@@ -52,16 +52,22 @@ $(function(){
 
         $nav.removeClass('active');
         $nav.eq(it).addClass('active');
-
-        if(it > current){
-            $box.eq(current).stop().animate({top:"-100%"},500);
-            $box.eq(it).css({top:"100%"}).stop().animate({top:"0%"},500);
-            current = it;
-        }else{
-            $box.eq(current).stop().animate({top:"100%"},500);
-            $box.eq(it).css({top:"-100%"}).stop().animate({top:"0%"},500);
-            current = it;
-        }
+        
+        if($box.is(':animated') == false){
+            if(it > current){ //it이  current보다 클 경우, 스크롤 다운이랑 동일
+                $box.eq(current).stop().animate({top:"-100%"},500);
+                $box.eq(it).css({top:"100%"}).stop().animate({top:"0%"},500);
+                current = it;
+            }else if(it < current){//it이  current보다 작을 경우, 스크롤 업이랑 동일
+                $box.eq(current).stop().animate({top:"100%"},500);
+                $box.eq(it).css({top:"-100%"}).stop().animate({top:"0%"},500);
+                current = it;
+            }else if(it == current){//it이  current랑 같을 경우
+                console.log('stop');
+                $box.eq(current).stop();
+                $box.eq(it).stop();
+            };
+        };
 
         return false;
     });
